@@ -85,7 +85,6 @@ export default function Home() {
 
     // Start animation
     setIsAnimating(true);
-    setAnimationPhase('accelerating');
 
     // Animation parameters
     const accelerationDuration = 500;
@@ -104,7 +103,6 @@ export default function Home() {
         setDisplayedItem(finalItem);
         setSelectedItem(finalItem);
         setIsAnimating(false);
-        setAnimationPhase('finished');
 
         // Add to picked items set
         setPickedItems(prev => new Set([...prev, finalItem]));
@@ -122,7 +120,6 @@ export default function Home() {
       if (elapsed < accelerationDuration) {
         // Accelerating
         speed = 50 + (elapsed / accelerationDuration) * 30;
-        setAnimationPhase('accelerating');
       } else if (elapsed < accelerationDuration + steadyDuration) {
         // Steady fast speed
         speed = 80;
@@ -130,7 +127,6 @@ export default function Home() {
         // Decelerating
         const decelProgress = (elapsed - accelerationDuration - steadyDuration) / decelerationDuration;
         speed = 80 * (1 - decelProgress * 0.95);
-        setAnimationPhase('decelerating');
       }
 
       // Change displayed item based on speed (show all items during animation)
