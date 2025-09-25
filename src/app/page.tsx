@@ -11,7 +11,6 @@ interface PickHistory {
   timestamp: Date;
 }
 
-type AnimationPhase = 'idle' | 'accelerating' | 'decelerating' | 'finished';
 
 // Sample movie star data
 const sampleMovieStars = [
@@ -36,7 +35,6 @@ export default function Home() {
   const [items, setItems] = useState<string>("");
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const [animationPhase, setAnimationPhase] = useState<AnimationPhase>('idle');
   const [history, setHistory] = useState<PickHistory[]>([]);
   const [displayedItem, setDisplayedItem] = useState<string | null>(null);
   const [pickedItems, setPickedItems] = useState<Set<string>>(new Set());
